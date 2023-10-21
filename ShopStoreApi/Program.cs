@@ -1,3 +1,5 @@
+using Core.Interface.IReposetory;
+using Infrastructure.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 using ShopStoreApi.Data.Context;
 
@@ -15,6 +17,12 @@ builder.Services.AddDbContext<StoreContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("WebApiDatabase"));
 });
 
+#region DependencyInjection
+
+builder.Services.AddScoped<IproductRepository,productRepository>();
+
+
+#endregion
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
-﻿ using Microsoft.AspNetCore.Mvc;
+﻿ using Core.Interface.IReposetory;
+ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopStoreApi.Data.Context;
 
@@ -9,18 +10,18 @@ namespace ShopStoreApi.Controllers;
 [Route("asi/[controller]")]
 public class ProductController : ControllerBase
 {
-    private readonly StoreContext _context;
+    private readonly IproductRepository _rep;
 
-    public ProductController(StoreContext context)
+    public ProductController(IproductRepository rep)
     {
-        _context = context;
+        _rep = rep;
     }
 
-//get product from database
+    //get product from database
     [HttpGet]
-    public async Task<List<product>> GetAllProduct()
+    public async Task<IReadOnlyList<product>> GetAllProduct()
     {
-        var products = await _context.prooduct.ToListAsync();
+        var products = await _rep.GetProductsAsync();
 
         return products;
     }
@@ -31,7 +32,7 @@ public class ProductController : ControllerBase
     {
         try
         {
-            var product = await _context.prooduct.FirstOrDefaultAsync(x => x.Id == id);
+            var product = await _rep.GetBtIdAsync(id);
             return product;
         }
         catch (Exception e)
@@ -40,4 +41,5 @@ public class ProductController : ControllerBase
             throw;
         }
     }
+     
 }
