@@ -19,10 +19,10 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 
 #region DependencyInjection
 
-builder.Services.AddScoped<IproductRepository,productRepository>();
-
+builder.Services.AddScoped<IproductRepository, productRepository>();
 
 #endregion
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -38,4 +38,17 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+using var scope = app.Services.CreateScope();
+var service = scope.ServiceProvider;
+var context = service.GetRequiredService<StoreContext>();
+var Loger = service.GetRequiredService<ILogger<Program>>();
+try
+{
+    await context.Database.MigrateAsync();
+}
+catch (Exception e)
+{
+    Console.WriteLine(e);
+ Loger.LogError(e,"this is not worke ");
+}
 app.Run();
