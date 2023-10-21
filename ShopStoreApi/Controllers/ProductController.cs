@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopStoreApi.Data.Context;
-using ShopStoreApi.Entity.Products;
+
 
 namespace ShopStoreApi.Controllers;
 

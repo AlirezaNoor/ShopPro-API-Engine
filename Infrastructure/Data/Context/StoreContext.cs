@@ -1,7 +1,6 @@
-﻿using System.Security.Principal;
+﻿
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using ShopStoreApi.Entity.Products;
+
 
 namespace ShopStoreApi.Data.Context;
 
