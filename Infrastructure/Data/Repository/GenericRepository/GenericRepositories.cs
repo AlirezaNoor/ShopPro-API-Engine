@@ -1,17 +1,26 @@
 ﻿using Core.Entity;
 using Core.Interface.Generic;
+using Microsoft.EntityFrameworkCore;
+using ShopStoreApi.Data.Context;
 
 namespace Infrastructure.Data.Repository.GenericRepository;
 
-public class GenericRepositories<T> :IGenericRepository<T> where T :BaseEntity
+public class GenericRepositories<T> : IGenericRepository<T> where T : BaseEntity
 {
-    public Task<T> GetById(object id)
+    private readonly StoreContext _context;
+
+    public GenericRepositories(StoreContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
 
-    public Task<IReadOnlyList<T>> GetAll()
+    public async Task<T> GetById(object id)
     {
-        throw new NotImplementedException();
+        return await _context.Set<T>().FindAsync(id);
+    }
+
+    public async Task<IReadOnlyList<T>> GetAll()
+    {
+        return await _context.Set<T>().ToListAsync();
     }
 }
