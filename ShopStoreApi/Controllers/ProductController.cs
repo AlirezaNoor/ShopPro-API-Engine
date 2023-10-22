@@ -1,4 +1,5 @@
-﻿ using Core.Interface.IReposetory;
+﻿ using System.Text.Json;
+ using Core.Interface.IReposetory;
  using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopStoreApi.Data.Context;
@@ -32,6 +33,7 @@ public class ProductController : ControllerBase
     {
         try
         {
+ 
             var product = await _rep.GetBtIdAsync(id);
             return product;
         }

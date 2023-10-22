@@ -1,4 +1,5 @@
 using Core.Interface.IReposetory;
+using Infrastructure;
 using Infrastructure.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 using ShopStoreApi.Data.Context;
@@ -45,6 +46,7 @@ var Loger = service.GetRequiredService<ILogger<Program>>();
 try
 {
     await context.Database.MigrateAsync();
+    await SeedStoreContext.SeedAsync(context);
 }
 catch (Exception e)
 {
