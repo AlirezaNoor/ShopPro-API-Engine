@@ -1,6 +1,8 @@
+using Core.Interface.Generic;
 using Core.Interface.IReposetory;
 using Infrastructure;
 using Infrastructure.Data.Repository;
+using Infrastructure.Data.Repository.GenericRepository;
 using Microsoft.EntityFrameworkCore;
 using ShopStoreApi.Data.Context;
 
@@ -21,6 +23,7 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 #region DependencyInjection
 
 builder.Services.AddScoped<IproductRepository, productRepository>();
+builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepositories<>));
 
 #endregion
 
