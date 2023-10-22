@@ -1,9 +1,9 @@
-using Core.Interface.Generic;
-using Core.Interface.IReposetory;
-using Infrastructure;
+ using Core.Interface.UnitofWork;
+ using Infrastructure;
 using Infrastructure.Data.Repository;
 using Infrastructure.Data.Repository.GenericRepository;
-using Microsoft.EntityFrameworkCore;
+ using Infrastructure.UnitofWork;
+ using Microsoft.EntityFrameworkCore;
 using ShopStoreApi.Data.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,9 +22,8 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 
 #region DependencyInjection
 
-builder.Services.AddScoped<IproductRepository, productRepository>();
-builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepositories<>));
-
+builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+ 
 #endregion
 
 var app = builder.Build();

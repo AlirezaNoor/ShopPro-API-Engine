@@ -1,6 +1,5 @@
 ﻿using System.Text.Json;
-using Core.Interface.Generic;
-using Core.Interface.IReposetory;
+using Core.Interface.UnitofWork;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopStoreApi.Data.Context;
@@ -12,23 +11,18 @@ namespace ShopStoreApi.Controllers;
 [Route("asi/[controller]")]
 public class ProductController : ControllerBase
 {
-    private readonly IGenericRepository<ProductBrand> _productbrand;
-    private readonly IGenericRepository<ProductType> _producttype;
-    private readonly IGenericRepository<product> _product;
+    private readonly IUnitOfWork _context;
 
-    public ProductController(IGenericRepository<product> product, IGenericRepository<ProductType> producttype,
-        IGenericRepository<ProductBrand> productbrand)
+    public ProductController(IUnitOfWork context)
     {
-        _product = product;
-        _producttype = producttype;
-        _productbrand = productbrand;
+        _context = context;
     }
 
     //get product from database
     [HttpGet]
     public async Task<IReadOnlyList<product>> GetAllProduct()
     {
-        var products = await _product.GetAll();
+        var products = _context.productuw.get(null, "productbrand,producttype").ToList();
 
         return products;
     }
@@ -37,27 +31,18 @@ public class ProductController : ControllerBase
     [HttpGet("{id}")]
     public async Task<product> Getproduct(int id)
     {
-        try
-        {
-            var product = await _product.GetById(id);
-            return product;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        return _context.productuw.Getbyid(id);
     }
 
     [HttpGet("Brands")]
     public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetAllBrand()
     {
-        return Ok(await _productbrand.GetAll());
+        return _context.productbranduw.get().ToList();
     }
 
     [HttpGet("Types")]
     public async Task<ActionResult<IReadOnlyList<ProductType>>> GetAllproductType()
     {
-        return Ok(await _producttype.GetAll());
+        return _context.producttypeuw.get().ToList();
     }
 }
