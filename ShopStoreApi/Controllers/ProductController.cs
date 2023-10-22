@@ -7,9 +7,7 @@ using ShopStoreApi.Data.Context;
 
 namespace ShopStoreApi.Controllers;
 
-[ApiController]
-[Route("asi/[controller]")]
-public class ProductController : ControllerBase
+public class ProductController : BaseApiController
 {
     private readonly IUnitOfWork _context;
 
