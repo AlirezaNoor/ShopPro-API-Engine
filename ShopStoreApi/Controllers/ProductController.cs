@@ -43,5 +43,16 @@ public class ProductController : ControllerBase
             throw;
         }
     }
+[HttpGet("Brands")]
+    public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetAllBrand()
+    {
+        return Ok(await _rep.GetproductBrands());
+    }
+    [HttpGet("Types")]
+
+    public async Task<ActionResult<IReadOnlyList<ProductType>>> GetAllproductType()
+    {
+        return Ok(await _rep.GetProductType());
+    }
      
 }

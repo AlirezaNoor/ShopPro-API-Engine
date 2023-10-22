@@ -1,3 +1,42 @@
-﻿{
-
-}
+﻿[
+  {
+    "Id": 1,
+    "name": "Brand 1"
+  },
+  {
+    "Id": 2,
+    "name": "Brand 2"
+  },
+  {
+    "Id": 3,
+    "name": "Brand 3"
+  },
+  {
+    "Id": 4,
+    "name": "Brand 4"
+  },
+  {
+    "Id": 5,
+    "name": "Brand 5"
+  },
+  {
+    "Id": 6,
+    "name": "Brand 6"
+  },
+  {
+    "Id": 7,
+    "name": "Brand 7"
+  },
+  {
+    "Id": 8,
+    "name": "Brand 8"
+  },
+  {
+    "Id": 9,
+    "name": "Brand 9"
+  },
+  {
+    "Id": 10,
+    "name": "Brand 10"
+  }
+]

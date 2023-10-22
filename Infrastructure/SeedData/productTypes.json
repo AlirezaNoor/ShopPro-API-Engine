@@ -1,3 +1,34 @@
-﻿{
-
-}
+﻿[
+  {
+    "Id": 1,
+    "name": "shirt"
+  },
+  {
+    "Id": 2,
+    "name": "pants"
+  },
+  {
+    "Id": 3,
+    "name": "shoes"
+  },
+  {
+    "Id": 4,
+    "name": "hat"
+  },
+  {
+    "Id": 5,
+    "name": "jacket"
+  },
+  {
+    "Id": 6,
+    "name": "dress"
+  },
+  {
+    "Id": 7,
+    "name": "tie"
+  },
+  {
+    "Id": 8,
+    "name": "skirt"
+  }
+]

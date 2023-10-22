@@ -1,3 +1,92 @@
-﻿{
-
-}
+﻿[
+  {
+    "Id": 1,
+    "name": "Red T-Shirt",
+    "description": "This is red T-shirt",
+    "price": 40,
+    "producttypeid": 2,
+    "productbrandid": 3,
+    "pictureurl": "img/Red_TShirt.png"
+  },
+  {
+    "Id": 2,
+    "name": "Blue Jeans",
+    "description": "High-quality blue jeans for men",
+    "price": 60,
+    "producttypeid": 1,
+    "productbrandid": 2,
+    "pictureurl": "img/Blue_Jeans.png"
+  },
+  {
+    "Id": 3,
+    "name": "White Sneakers",
+    "description": "Comfortable white sneakers for everyday wear",
+    "price": 55,
+    "producttypeid": 3,
+    "productbrandid": 1,
+    "pictureurl": "img/White_Sneakers.png"
+  },
+  {
+    "Id": 4,
+    "name": "Black Dress",
+    "description": "Elegant black dress for special occasions",
+    "price": 75,
+    "producttypeid": 2,
+    "productbrandid": 4,
+    "pictureurl": "img/Black_Dress.png"
+  },
+  {
+    "Id": 5,
+    "name": "Striped Polo Shirt",
+    "description": "Casual striped polo shirt for men",
+    "price": 35,
+    "producttypeid": 2,
+    "productbrandid": 3,
+    "pictureurl": "img/Striped_Polo_Shirt.png"
+  },
+  {
+    "Id": 6,
+    "name": "Denim Jacket",
+    "description": "Stylish denim jacket for cool evenings",
+    "price": 80,
+    "producttypeid": 1,
+    "productbrandid": 1,
+    "pictureurl": "img/Denim_Jacket.png"
+  },
+  {
+    "Id": 7,
+    "name": "Printed Skirt",
+    "description": "Fashionable printed skirt for women",
+    "price": 50,
+    "producttypeid": 2,
+    "productbrandid": 2,
+    "pictureurl": "img/Printed_Skirt.png"
+  },
+  {
+    "Id": 8,
+    "name": "Leather Boots",
+    "description": "Durable leather boots for outdoor activities",
+    "price": 90,
+    "producttypeid": 3,
+    "productbrandid": 4,
+    "pictureurl": "img/Leather_Boots.png"
+  },
+  {
+    "Id": 9,
+    "name": "Green Hoodie",
+    "description": "Warm green hoodie for chilly days",
+    "price": 45,
+    "producttypeid": 1,
+    "productbrandid": 1,
+    "pictureurl": "img/Green_Hoodie.png"
+  },
+  {
+    "Id": 10,
+    "name": "Plaid Shirt",
+    "description": "Classic plaid shirt for a timeless look",
+    "price": 55,
+    "producttypeid": 2,
+    "productbrandid": 3,
+    "pictureurl": "img/Plaid_Shirt.png"
+  }
+]

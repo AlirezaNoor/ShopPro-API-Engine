@@ -22,4 +22,14 @@ public class productRepository : IproductRepository
     {
         return await _context.prooduct.ToListAsync();
     }
+
+    public async Task<IReadOnlyList<ProductBrand>> GetproductBrands()
+    {
+        return await _context.prooductbrand.ToListAsync();
+    }
+
+    public async Task<IReadOnlyList<ProductType>> GetProductType()
+    {
+        return await _context.prooducttype.ToListAsync();
+    }
 }
