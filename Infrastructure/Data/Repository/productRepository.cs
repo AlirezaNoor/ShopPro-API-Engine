@@ -15,12 +15,13 @@ public class productRepository : IproductRepository
 
     public async Task<product> GetBtIdAsync(int Id)
     {
-        return await _context.prooduct.FindAsync(Id);
+        return await _context.prooduct.Include(x => x.productbrand).Include(x => x.producttype)
+            .FirstOrDefaultAsync(x => x.Id == Id);
     }
 
     public async Task<IReadOnlyList<product>> GetProductsAsync()
     {
-        return await _context.prooduct.ToListAsync();
+        return await _context.prooduct.Include(x => x.productbrand).Include(x => x.producttype).ToListAsync();
     }
 
     public async Task<IReadOnlyList<ProductBrand>> GetproductBrands()
