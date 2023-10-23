@@ -3,8 +3,10 @@
 using Infrastructure.Data.Repository;
 using Infrastructure.Data.Repository.GenericRepository;
  using Infrastructure.UnitofWork;
+ using Microsoft.AspNetCore.Mvc;
  using Microsoft.EntityFrameworkCore;
 using ShopStoreApi.Data.Context;
+ using ShopStoreApi.Errors;
  using ShopStoreApi.Middleware;
 
  var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +28,21 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
  
 #endregion
+
+ builder.Services.Configure<ApiBehaviorOptions>(opt =>
+ {
+  opt.InvalidModelStateResponseFactory = actionContext =>
+  {
+   var error = actionContext.ModelState.Where(e => e.Value.Errors.Count > 0)
+    .SelectMany(x => x.Value.Errors)
+    .Select(x => x.ErrorMessage);
+   var errorresponse = new ApivalidationErrorResponse()
+   {
+    Errors = error
+   };
+   return new BadRequestObjectResult(errorresponse);
+  };
+ });
 
 var app = builder.Build();
  app.UseMiddleware<ExceptionMiddleware>();
