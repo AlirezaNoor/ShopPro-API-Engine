@@ -43,4 +43,10 @@ public class ProductController : BaseApiController
     {
         return _context.producttypeuw.get().ToList();
     }
+
+    [HttpGet("ExceptionThrower")]
+    public ActionResult exception()
+    {
+        throw new Exception();
+    }
 }

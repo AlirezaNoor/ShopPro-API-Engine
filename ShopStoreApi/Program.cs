@@ -5,8 +5,9 @@ using Infrastructure.Data.Repository.GenericRepository;
  using Infrastructure.UnitofWork;
  using Microsoft.EntityFrameworkCore;
 using ShopStoreApi.Data.Context;
+ using ShopStoreApi.Middleware;
 
-var builder = WebApplication.CreateBuilder(args);
+ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
@@ -27,7 +28,7 @@ builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
 #endregion
 
 var app = builder.Build();
-
+ app.UseMiddleware<ExceptionMiddleware>();
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
